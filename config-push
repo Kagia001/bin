@@ -1,0 +1,3 @@
+git --git-dir=/home/karl/dotfiles --work-tree=/home/karl add -u
+git --git-dir=/home/karl/dotfiles --work-tree=/home/karl commit -m 'changes...'
+git --git-dir=/home/karl/dotfiles --work-tree=/home/karl push

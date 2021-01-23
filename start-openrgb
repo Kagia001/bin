@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# pastel format hex 'hsl(95, 100%, 90%)' for white on kb
+MOUSE_COLOR=E4B51C
+KEYBOARD_COLOR=E4B51C
+
+MOUSE_NUM=1
+KEYBOARD_NUM=0
+
+openrgb -d $KEYBOARD_NUM -c $KEYBOARD_COLOR -d $MOUSE_NUM -c $MOUSE_COLOR --server &

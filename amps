@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+a=$1
+b=$2
+F="$a.`Date +%H`"
+
+echo "\nAtom Find with Sort Package + Cache Hour"
+# Cache by Last Find Sort Package + Hour
+mkdir -p ~/.apmrc
+if [[ -f ~/.apmrc/$F ]]; then
+  echo ''
+else
+  apm search $a > ~/.apmrc/$F
+fi
+
+case $b in
+  "-s" )
+    cat ~/.apmrc/$F | sed "s#(#( #g" | grep \) | awk '{print $(NF-1),$0}' | sort -n -r
+    ;;
+  "-d" )
+    cat ~/.apmrc/$F | sed "s#(#( #g" | grep \) | awk '{print $(NF-3),$0}' | sort -n -r
+    ;;
+  *)
+    echo "Usage: apms package -s|-d"
+esac

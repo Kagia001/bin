@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# non-gui:
+start-jack &
+
+sleep 5
+#gui:
+discord &

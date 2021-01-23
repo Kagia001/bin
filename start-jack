@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SOUNDCARD="hw:HD"
+
+jack_control ds alsa
+jack_control dps device $SOUNDCARD
+jack_control dps playback $SOUNDCARD
+jack_control dps capture $SOUNDCARD
+jack_control dps rate 48000
+jack_control dps nperiods 3
+jack_control dps period 128
+jack_control start
+sleep 5 
+zita-a2j -j microphone -d hw:Mic &
+sleep 0.1
+lsp-plugins-para-equalizer-x16-stereo -c Customisation/eq/oratory1990_m50x.cfg &
+jack_disconnect PulseAudio\ JACK\ Sink:front-left system:playback_1
+jack_disconnect PulseAudio\ JACK\ Sink:front-right system:playback_2 
+qjackctl &
